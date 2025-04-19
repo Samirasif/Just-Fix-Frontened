@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="flex justify-between items-center py-1 font-medium">
       <img className="w-44 h-24" src="/src/assets/justFix.png" alt="" />
 
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
+      <ul className="hidden text-xl sm:flex gap-5 text-sm text-gray-700">
         <NavLink to="/" className="hover:text-blue-500">
           <li>Home</li>
         </NavLink>
@@ -36,7 +36,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-3 text-green-800">
-        <NavLink to="/login" className="hover:text-blue-500">
+        <NavLink to="/login" className="text-xl hover:text-blue-500">
           <p>Login</p>
         </NavLink>
         <CgProfile className="text-3xl ml-2" />
