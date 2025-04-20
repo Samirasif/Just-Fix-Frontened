@@ -39,7 +39,9 @@ const Navbar = () => {
         <NavLink to="/login" className="text-xl hover:text-blue-500">
           <p>Login</p>
         </NavLink>
+        <NavLink to="/profile" className="text-xl hover:text-blue-500">
         <CgProfile className="text-3xl ml-2" />
+        </NavLink>
       </div>
     </div>
   );
