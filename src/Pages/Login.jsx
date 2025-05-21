@@ -1,6 +1,29 @@
-import { NavLink } from 'react-router-dom';
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
+  const { userLogin, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate("/");
+        toast.success("Login Successful");
+      })
+      .catch((error) => {
+        alert(`Please Provide Corrent Info : ${error.code}`);
+      });
+  };
 
   return (
     <section>
@@ -8,12 +31,6 @@ const Login = () => {
       <div className="mx-auto w-full max-w-3xl px-5 py-16 md:px-10 md:py-20">
         {/* Component */}
         <div className=" relative mx-auto max-w-xl bg-gray-100 px-8 py-12 text-center">
-          {/* Close Button */}
-          {/* <svg className="absolute top-3 right-3 sm:top-7 sm:right-7" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5.25 5.25L18.75 18.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M5.25 18.75L18.75 5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg> */}
-
           {/* Buttons */}
           <div className="max-w-60 mx-auto justify-between mb-8">
             <button className="text-2xl font-bold md:text-2xl px-2 border-black pb-4">
@@ -24,11 +41,16 @@ const Login = () => {
           <div className="mx-auto w-full max-w-md">
             {/* Form */}
             <div className="mx-auto mb-4 max-w-md pb-4">
-              <form name="wf-form-password" method="get">
+              <form
+                onSubmit={handleSubmit}
+                name="wf-form-password"
+                method="get"
+              >
                 <div className="relative flex flex-col">
                   <div className="font-bold mb-1 text-left">Email</div>
                   <input
                     type="email"
+                    name="email"
                     className="mb-6 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black"
                     placeholder="Email Address"
                     required=""
@@ -38,12 +60,20 @@ const Login = () => {
                   <div className="font-bold mb-1 text-left">Password</div>
                   <input
                     type="password"
+                    name="password"
                     className="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black"
-                    placeholder="Password (min 8 characters)"
+                    placeholder="Password "
                     required=""
                   />
                 </div>
-                <p>Don't Have an Account? <NavLink to="/register" className="text-blue-500 hover:underline">Register</NavLink>
+                <p>
+                  Don't Have an Account?{" "}
+                  <NavLink
+                    to="/register"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Register
+                  </NavLink>
                 </p>
 
                 <input
@@ -56,6 +86,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };

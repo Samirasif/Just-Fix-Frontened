@@ -1,6 +1,42 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+
+
+
 const Register = () => {
+const {createUser,setUser}=useContext(AuthContext);
+const navigate= useNavigate();
+
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    // const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    // const confirmPassword = form.confirmPassword.value;
+    createUser(email,password)
+    .then(result =>{
+      const user =result.user
+      setUser(user)
+      console.log(user);
+      toast.success("User Created Successfully");
+      navigate('/login')
+      
+    })
+    .catch(error => {
+      console.error(error.message);
+    
+  })
+    // if (password !== confirmPassword) {
+    //   alert("Passwords do not match!");
+    //   return;
+    // }
+  
+    
+  };
   return (
     <div>
       <div className="mx-auto w-full max-w-3xl px-5 py-16 md:px-10 md:py-20">
@@ -22,42 +58,52 @@ const Register = () => {
           <div className="mx-auto w-full max-w-md">
             {/* Form */}
             <div className="mx-auto mb-4 max-w-md pb-4">
-              <form name="wf-form-password" method="get">
+              <form
+                onSubmit={handleSignUp}
+                name="wf-form-password"
+                method="get"
+              >
                 <div className="relative flex flex-col">
                   <div className="relative mb-4">
                     <div className="font-bold mb-1 text-left">Name</div>
                     <input
                       type="text"
+                      name="name"
                       className="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black"
                       placeholder="Enter Your Name"
-                      required=""
+                      required
                     />
                   </div>
 
                   <div className="font-bold mb-1 text-left">Email</div>
                   <input
                     type="email"
+                    name="email"
                     className="mb-6 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black"
                     placeholder="Email Address"
-                    required=""
+                    required
                   />
                 </div>
                 <div className="relative mb-4">
                   <div className="font-bold mb-1 text-left">Password</div>
                   <input
                     type="password"
+                    name="password" 
                     className="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black"
-                    placeholder="Password (min 8 characters)"
-                    required=""
+                    placeholder="Password "
+                    required
                   />
                 </div>
                 <div className="relative mb-4">
-                  <div className="font-bold mb-1 text-left">Confirm Password</div>
+                  <div className="font-bold mb-1 text-left">
+                    Confirm Password
+                  </div>
                   <input
                     type="password"
+                    name="confirmPassword"
                     className="mb-4 block h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-black placeholder:text-black"
-                    placeholder="Confirm Password (min 8 characters)"
-                    required=""
+                    placeholder="Confirm Password "
+                    required
                   />
                 </div>
 
@@ -71,16 +117,18 @@ const Register = () => {
                   </NavLink>
                 </p>
 
-                <input
+                <button
                   type="submit"
-                  value="Join Now"
                   className=" inline-block w-full cursor-pointer items-center rounded-md bg-black px-6 py-3 text-center font-semibold text-white"
-                />
+                >
+                  SignUp
+                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
