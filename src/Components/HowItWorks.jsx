@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, Users, Package } from "lucide-react";
+import { Search, Users, Package} from "lucide-react";
 
 export default function HowItWorksSection() {
   return (
@@ -55,10 +55,12 @@ export default function HowItWorksSection() {
 
       {/* CTA Button */}
       <div className="text-center mb-16">
-        <button className=" bg-[#96BB7C]   hover:bg-green-700 text-white font-medium py-3 px-6 rounded-md transition-colors">
+        <button
+        
+          className=" bg-[#96BB7C]   hover:bg-green-700 text-white font-medium py-3 px-6 rounded-md transition-colors"
+        >
           Find a Professional Now
         </button>
-        
       </div>
 
       {/* Testimonials section */}

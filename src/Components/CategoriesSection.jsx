@@ -20,8 +20,7 @@ import {
       { name: "Shifting", jobs: 2, icon: ClipboardList },
       { name: "Tutor", jobs: 8, icon: GraduationCap },
       { name: "Technology", jobs: 5, icon: Cpu },
-      { name: "Social Media", jobs: 7, icon: Share2 },
-      { name: "Content Writer", jobs: 8, icon: FileText },
+      
       { name: "Software", jobs: 8, icon: Code },
     ]
   
@@ -34,19 +33,19 @@ import {
               CATEGORIES
             </span>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Browse by categories</h2>
-            <p className="text-gray-600">The digital marketing solution provider for Ford Dealers</p>
+            <p className="text-gray-600">Get Your Professional Service</p>
           </div>
   
           {/* Categories Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {categories.map((category, index) => {
               const Icon = category.icon
               return (
                 <div
                   key={index}
-                  className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex items-center space-x-3"
+                  className="bg-emerald-100 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200 flex items-center space-x-3"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center">
                     <Icon className="h-5 w-5 text-gray-600" />
                   </div>
                   <div>

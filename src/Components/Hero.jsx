@@ -5,7 +5,7 @@ import Container from "./Container";
 const Hero = () => {
   return (
     <div className="bg-blue-100 p-2">
-      <Container className="flex flex-wrap pt-20 ">
+      <Container className="flex flex-wrap pt-8 ">
         <div className="flex items-center w-full lg:w-1/2">
           <div className="max-w-2xl mb-8">
             <h2 className="text-xl font-bold leading-snug tracking-tight mt-2 text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight ">

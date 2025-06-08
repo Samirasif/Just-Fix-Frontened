@@ -7,7 +7,9 @@ import FindWork from "../Components/FindWork";
 import HowItWorksSection from "../Components/HowItWorks";
 
 
+
 const Home = () => {
+ 
   return (
     <div>
       <Hero />

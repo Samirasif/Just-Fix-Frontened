@@ -1,5 +1,6 @@
-import React from "react";
+
 import { Droplet } from "lucide-react";
+
 
 export default function ServiceCategoryCard({
   icon: Icon,
@@ -10,7 +11,7 @@ export default function ServiceCategoryCard({
 }) {
     
   return (
-    <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+    <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow bg-lime-100">
       <div className="flex justify-between items-start">
         <div className="flex items-start gap-4">
           <div className={`p-3 rounded-full ${iconBgColor}`}>
